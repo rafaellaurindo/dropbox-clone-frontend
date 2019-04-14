@@ -32,7 +32,7 @@ export default class Box extends Component {
   };
 
   subscribeToNewFiles = boxId => {
-    const io = socket("http://rafabox-backend.herokuapp.com");
+    const io = socket(process.env.BASE_URL_API);
     io.emit("connectRoom", boxId);
 
     io.on("file", newFile => {
