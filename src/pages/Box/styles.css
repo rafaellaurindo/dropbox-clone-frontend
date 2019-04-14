@@ -26,6 +26,16 @@
   border-left: 1px solid #ddd;
 }
 
+#box-container .upload {
+  border-radius: 4px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #ddd;
+  color: #999;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
 #box-container ul {
   margin: 30px 0;
   list-style: none;
