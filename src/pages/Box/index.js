@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { MdInsertDriveFile } from "react-icons/md";
-import { distanceInWords } from "date-fns";
-import pt from "date-fns/locale/pt";
 import DropZone from "react-dropzone";
+import { distanceInWords } from "date-fns";
+import { MdInsertDriveFile } from "react-icons/md";
+import pt from "date-fns/locale/pt";
+import socket from "socket.io-client";
 
 import api from "../../services/api";
 import logo from "../../assets/logo.png";
@@ -12,11 +13,13 @@ export default class Box extends Component {
   state = {
     box: {}
   };
+
   async componentDidMount() {
     const boxId = this.props.match.params.id;
     const response = await api.get(`/boxes/${boxId}`);
 
     this.setState({ box: response.data });
+    this.subscribeToNewFiles(boxId);
   }
 
   handleUpload = files => {
@@ -25,6 +28,20 @@ export default class Box extends Component {
       data.append("file", file);
 
       await api.post(`/boxes/${this.state.box._id}/files`, data);
+    });
+  };
+
+  subscribeToNewFiles = boxId => {
+    const io = socket("http://rafabox-backend.herokuapp.com");
+    io.emit("connectRoom", boxId);
+
+    io.on("file", newFile => {
+      this.setState({
+        box: {
+          ...this.state.box,
+          files: [newFile, ...this.state.box.files]
+        }
+      });
     });
   };
 
