@@ -11,18 +11,26 @@
   flex-direction: column;
 }
 
+#main-container form h2 {
+  text-align: center;
+  padding: 10px;
+  font-size: 22px;
+  color: #333;
+  font-variant-caps: petite-caps;
+}
+
 #main-container form input {
   height: 48px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
   padding: 0 20px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 #main-container form button {
   height: 48px;
-  background: #7159c1;
+  background: #2872a7;
   border-radius: 4px;
   font-size: 16px;
   padding: 0 20px;

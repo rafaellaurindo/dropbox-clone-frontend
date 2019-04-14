@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import logo from "../../assets/logo.png";
 
+import logo from "../../assets/logo.png";
 import "./styles.css";
 
 export default class Main extends Component {
@@ -9,6 +9,7 @@ export default class Main extends Component {
       <div id="main-container">
         <form action="">
           <img src={logo} alt="" />
+          <h2>Rafabox - Cloud Storage</h2>
           <input placeholder="Criar novo box" />
           <button type="submit">Criar</button>
         </form>
