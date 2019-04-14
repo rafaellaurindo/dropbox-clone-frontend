@@ -14,6 +14,12 @@
 }
 
 #box-container header h1 {
+  color: #20699b;
+  margin-left: 10px;
+  font-variant-caps: small-caps;
+}
+
+#box-container header h2 {
   font-size: 21px;
   padding-left: 15px;
   margin-left: 15px;
