@@ -9,7 +9,7 @@ export default class Main extends Component {
     newBox: ""
   };
 
-  handlerSubmit = async event => {
+  handleSubmit = async event => {
     event.preventDefault();
     const response = await api.post("/boxes", {
       title: this.state.newBox
@@ -25,7 +25,7 @@ export default class Main extends Component {
   render() {
     return (
       <div id="main-container">
-        <form onSubmit={this.handlerSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <img src={logo} alt="" />
           <h2>Rafabox - Cloud Storage</h2>
           <input
