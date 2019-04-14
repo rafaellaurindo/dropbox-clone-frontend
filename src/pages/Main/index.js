@@ -1,16 +1,38 @@
 import React, { Component } from "react";
+import api from "../../services/api";
 
 import logo from "../../assets/logo.png";
 import "./styles.css";
 
 export default class Main extends Component {
+  state = {
+    newBox: ""
+  };
+
+  handlerSubmit = async event => {
+    event.preventDefault();
+    const response = await api.post("/boxes", {
+      title: this.state.newBox
+    });
+
+    console.log(response.data);
+  };
+
+  handleInputChange = event => {
+    this.setState({ newBox: event.target.value });
+  };
+
   render() {
     return (
       <div id="main-container">
-        <form action="">
+        <form onSubmit={this.handlerSubmit}>
           <img src={logo} alt="" />
           <h2>Rafabox - Cloud Storage</h2>
-          <input placeholder="Criar novo box" />
+          <input
+            placeholder="Criar novo box"
+            value={this.state.newBox}
+            onChange={this.handleInputChange}
+          />
           <button type="submit">Criar</button>
         </form>
       </div>
